@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_07_152500) do
+ActiveRecord::Schema.define(version: 2018_06_07_181050) do
 
   create_table "eles", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -39,9 +39,18 @@ ActiveRecord::Schema.define(version: 2018_06_07_152500) do
     t.index ["reset_password_token"], name: "index_eles_on_reset_password_token", unique: true
   end
 
+  create_table "eles_events", id: false, force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.integer "ele_id", null: false
+    t.index ["ele_id", "event_id"], name: "index_eles_events_on_ele_id_and_event_id"
+    t.index ["event_id", "ele_id"], name: "index_eles_events_on_event_id_and_ele_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "ele_id"
+    t.index ["ele_id"], name: "index_events_on_ele_id"
   end
 
 end

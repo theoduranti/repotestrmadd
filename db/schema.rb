@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_07_181050) do
+ActiveRecord::Schema.define(version: 2018_06_07_203441) do
 
   create_table "eles", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -51,6 +51,33 @@ ActiveRecord::Schema.define(version: 2018_06_07_181050) do
     t.datetime "updated_at", null: false
     t.integer "ele_id"
     t.index ["ele_id"], name: "index_events_on_ele_id"
+  end
+
+  create_table "pros", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "firstname"
+    t.string "lastname"
+    t.string "photo"
+    t.string "description"
+    t.string "passion1"
+    t.string "passion2"
+    t.string "passion3"
+    t.string "passion4"
+    t.string "ville"
+    t.string "departement"
+    t.index ["email"], name: "index_pros_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_pros_on_reset_password_token", unique: true
   end
 
 end

@@ -30,4 +30,4 @@
 /config/master.key
 
 # Ignorer dot env
-# .env
+.env
